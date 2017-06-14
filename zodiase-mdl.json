@@ -1,0 +1,9 @@
+{
+  "theme": {
+    "primary": "deep_orange",
+    "accent": "blue"
+  },
+  "patches": {
+    "autoUpgrade": false
+  }
+}
