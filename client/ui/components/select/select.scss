@@ -1,0 +1,31 @@
+.mdl-select-field {
+
+  .mdl-icon-toggle__label {
+    float: right;
+    margin-top: -32px;
+    color: rgba(0, 0, 0, 0.4);
+  }
+  &.is-focused {
+    .mdl-icon-toggle__label {
+      color: #3f51b5;
+    }
+  }
+
+  .mdl-menu__container {
+    width: 100% !important;
+    overflow: hidden;
+    .mdl-menu .mdl-menu__item {
+      font-size: 16px;
+    }
+  }
+}
+.mdl-select-field__fullwidth .mdl-menu {
+  width: 100%;
+}
+
+.mdl-select-field__fix-height {
+  .mdl-menu__container{
+    overflow-y: auto;
+    max-height: 300px !important;
+  }
+}

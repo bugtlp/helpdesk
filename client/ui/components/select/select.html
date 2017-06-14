@@ -1,0 +1,14 @@
+<template name="mdlSelectField">
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-select-field mdl-select-field__fullwidth mdl-select-field__fix-height">
+    <input class="mdl-textfield__input" type="text" name={{name}} id="{{tid}}_select" value="" readonly tabIndex="-1" placeholder="{{placeholder}}">
+    <label for="{{tid}}_select">
+        <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
+    </label>
+    <label for="{{tid}}_select" class="mdl-textfield__label">{{label}}</label>
+    <ul for="{{tid}}_select" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+      {{#each items}}
+      <li class="mdl-menu__item" data-val="{{_id}}">{{name}}</li>
+      {{/each}}
+    </ul>
+  </div>
+</template>

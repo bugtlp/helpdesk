@@ -3,23 +3,79 @@
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
+  <div class="demo-layout-transparent mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
+      <div class="mdl-layout__header-row">
+        <!-- Title -->
+        <!--<span class="mdl-layout-title">Заявки</span>-->
 
-  {{> hello}}
-  {{> info}}
+        <div class="mdl-textfield mdl-js-textfield">
+          <div class="">
+            <input class="mdl-textfield__input" type="text" id="search">
+            <label class="mdl-textfield__label" for="search">Поиск заявки...</label>
+          </div>
+        </div>
+        <div class="mdl-layout-spacer"></div>
+        <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
+          <i class="material-icons">more_vert</i>
+        </button>
+        <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
+          <li class="mdl-menu__item">Выйти</li>
+        </ul>
+      </div>
+    </header>
+    <main class="mdl-layout__content mdl-color--grey-100">
+      {{> order_form}}
+      {{> orders}}
+    </main>
+    <a href="#" 
+      class="js-order-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white order-button" 
+    >
+      Проблема?
+    </a>
+  </div>
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+<template name="orders">
+  <div class="mdl-grid helpdesk-list-content">
+    {{#each orders}}
+    <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+      <div class="mdl-cell mdl-cell--1-col">№{{num}}</div>
+      <div class="mdl-cell mdl-cell--2-col">
+          {{category.name}}
+      </div>
+      <div class="mdl-cell mdl-cell--7-col problem">
+        {{description}}
+      </div>
+      <div class="mdl-cell mdl-cell--2-col">
+        <div class="date">{{formatDate createdAt}}</div>
+      </div>
+    </div>
+    {{/each}}
+  </div>
 </template>
 
-<template name="info">
-  <h2>Learn Meteor!</h2>
-  <ul>
-    <li><a href="https://www.meteor.com/try" target="_blank">Do the Tutorial</a></li>
-    <li><a href="http://guide.meteor.com" target="_blank">Follow the Guide</a></li>
-    <li><a href="https://docs.meteor.com" target="_blank">Read the Docs</a></li>
-    <li><a href="https://forums.meteor.com" target="_blank">Discussions</a></li>
-  </ul>
+<template name="order_form">
+  {{# if isOrderFormVisible}}
+  <div class="mdl-grid helpdesk-order-form">
+    <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col">
+      <form action="#" class="js-order-form">
+        <div class="mdl-grid">
+          <div class="mdl-cell mdl-cell--12-col">
+            <div class="mdl-textfield mdl-js-textfield" style="width: 100%">
+              <textarea class="mdl-textfield__input" name="description" type="text" rows="3" id="orderDescription" ></textarea>
+              <label class="mdl-textfield__label" for="orderDescription">Опишите вашу проблему...</label>
+            </div>
+          </div>
+          <div class="mdl-cell mdl-cell--4-col">
+            {{> mdlSelectField placeholder='выберите подходящую' name='category' label='Категория' items=cats}}
+          </div>
+          <div class="mdl-cell mdl-cell--12-col">
+            <button type="submit" class="send-button mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Отправить</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  {{/if}}
 </template>

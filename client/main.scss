@@ -1,0 +1,41 @@
+/* CSS declarations go here */
+html, body {
+  font-family: 'Roboto', 'Helvetica', sans-serif;
+}
+
+.helpdesk-list-content {
+  max-width: 1080px;
+  .problem {
+    $lines: 2; /* number of lines to show */
+    $line-height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $lines; 
+    line-height: $line-height;
+    max-height: $line-height * $lines;
+  }
+  .date {
+    position: relative;
+    top: -10px;
+    float: right;
+  }
+}
+
+.order-button {
+  position: fixed;
+  display: block;
+  right: 0;
+  bottom: 0;
+  margin-right: 40px;
+  margin-bottom: 40px;
+  z-index: 900;
+}
+
+.helpdesk-order-form {
+  max-width: 1080px;
+  .send-button {
+    float: right;
+  }
+}
